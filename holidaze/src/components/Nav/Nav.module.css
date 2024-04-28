@@ -1,0 +1,18 @@
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 10px 0 10px;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menuItem {
+    margin: 0 0 0 10px;
+}
+

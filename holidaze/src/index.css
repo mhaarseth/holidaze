@@ -1,8 +1,19 @@
+:root {
+  --main-theme-color: #007F4E;
+  --secondary-theme-color: #7F0031;
+  --h1-font: 'Josefin Sans', sans-serif;
+  --h1-size: calc(1rem + 1.5vw);
+}
+
+h1 {
+  color: var(--main-theme-color);
+  font-family: var(--h1-font);
+  font-size: var(--h1-size);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Dosis', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
