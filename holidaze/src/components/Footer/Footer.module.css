@@ -1,0 +1,8 @@
+.footerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-top: 2px solid var(--main-theme-color);
+    border-radius: 10px;
+}

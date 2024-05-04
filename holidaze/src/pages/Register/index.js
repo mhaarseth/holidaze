@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
-function App() {
-  return (
-    <div>Register placeholder</div>
-  )
+export default function Register() {
+  return <div>Register placeholder</div>;
 }
-
-export default App;

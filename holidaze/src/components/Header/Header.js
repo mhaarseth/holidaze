@@ -1,10 +1,11 @@
-import React from 'react';
-import Nav from '../../components/Nav/Nav.js';
+import React from "react";
+import Nav from "../../components/Nav/Nav.js";
+import styles from "./Header.module.css";
 
-function Header() {
+export default function Header() {
   return (
-    <div><Nav /></div>
-  )
+    <div className={styles.header}>
+      <Nav />
+    </div>
+  );
 }
-
-export default Header;

@@ -1,8 +1,20 @@
 :root {
   --main-theme-color: #007F4E;
-  --secondary-theme-color: #7F0031;
+  --alert-color: #7F0031;
   --h1-font: 'Josefin Sans', sans-serif;
-  --h1-size: calc(1rem + 1.5vw);
+  --text-font: 'Dosis', sans-serif;
+  --h1-size: calc(1.5rem + 1.5vw);
+  --h2-size: calc(0.8rem + 0.8vw);
+  --h3-size: calc(1.2rem);
+  --text-size: calc(1.2rem);
+}
+
+body {
+  margin: 0;
+  font-family: var(--text-font);
+  font-size:var(--text-size);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -11,14 +23,26 @@ h1 {
   font-size: var(--h1-size);
 }
 
-body {
+h2 {
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
   margin: 0;
-  font-family: 'Dosis', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--main-theme-color);
+}
+
+p {
+  margin: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+

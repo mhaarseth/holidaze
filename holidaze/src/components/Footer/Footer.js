@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import types from "./Footer.module.css";
 
-function App() {
+export default function Footer() {
   return (
-    <div>Footer placeholder</div>
-  )
+    <div className={types.footerContainer}>
+      <p>Holidaze 2024</p>
+    </div>
+  );
 }
-
-export default App;

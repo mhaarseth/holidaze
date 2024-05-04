@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
-function App() {
-  return (
-    <div>Create venue placeholder</div>
-  )
+export default function CreateVenue() {
+  return <div>Create venue placeholder</div>;
 }
-
-export default App;
