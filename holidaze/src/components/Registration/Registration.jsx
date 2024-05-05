@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import styles from "./Registration.module.css";
 import { REGISTRATION_URL } from "../../constants/constants";
 
