@@ -7,9 +7,8 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(name, email, password);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
       const response = await fetch(REGISTRATION_URL, {
@@ -23,11 +22,8 @@ export default function Registration() {
       if (!response.ok) {
         throw new Error("Registration failed");
       }
-
-      const data = await response.json();
-      console.log("Registration success", data);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
