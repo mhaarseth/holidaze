@@ -17,6 +17,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.mainContainer {
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
   color: var(--main-theme-color);
   font-family: var(--h1-font);
