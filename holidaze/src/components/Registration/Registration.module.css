@@ -1,0 +1,15 @@
+.registrationContainer {
+    width: 1200px;
+    margin: 0 10px 0 10px;
+}
+
+.registrationHeading {
+    margin-bottom: 50px;
+}
+
+.registrationRoleChoiceContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin: 30px 0;
+}

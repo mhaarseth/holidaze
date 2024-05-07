@@ -1,0 +1,13 @@
+.loginContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.loginContentContainer {
+    width: 1200px;
+    margin: 0 10px 0 10px;
+}
+
+.loginHeading {
+    margin-bottom: 50px;
+}

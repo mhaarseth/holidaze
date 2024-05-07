@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaRegUser } from "react-icons/fa";
+import { FaHotel, FaUserCircle } from "react-icons/fa";
 import styles from "./Nav.module.css";
 
 function Nav() {
@@ -9,10 +9,10 @@ function Nav() {
       <h1 className={styles.navTitle}>Holidaze</h1>
       <div className={styles.menuContainer}>
         <Link to="/" className={styles.menuItem}>
-          <FaHome />
+          <FaHotel />
         </Link>
         <Link to="/profile" className={styles.menuItem}>
-          <FaRegUser />
+          <FaUserCircle />
         </Link>
       </div>
     </div>

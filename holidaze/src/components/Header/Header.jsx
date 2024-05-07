@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../components/Nav/Nav.js";
+import Nav from "../Nav/Nav.jsx";
 import styles from "./Header.module.css";
 
 export default function Header() {

@@ -17,11 +17,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mainContainer {
-  display: flex;
-  justify-content: center;
-}
-
 h1 {
   color: var(--main-theme-color);
   font-family: var(--h1-font);
@@ -43,6 +38,46 @@ a {
 
 p {
   margin: 0;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  border:none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #ddd;
+  padding: 10px;
+}
+
+input:focus {
+  border-color: var(--main-theme-color);
+}
+
+button {
+  background-color: var(--main-theme-color);
+  border: none;
+  box-shadow: 0px 0px 6px #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: fit-content;
+  height: 50px;
+  align-self: center;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 code {

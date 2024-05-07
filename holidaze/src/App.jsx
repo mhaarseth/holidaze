@@ -5,12 +5,12 @@ import CreateVenue from "./pages/CreateVenue/index.js";
 import EditProfile from "./pages/EditProfile/index.js";
 import EditVenue from "./pages/EditVenue/index.js";
 import Home from "./pages/Home/index.jsx";
-import Login from "./pages/Login/index.js";
+import Login from "./pages/Login/index.jsx";
 import Profile from "./pages/Profile/index.js";
 import Register from "./pages/Register/index.jsx";
 import RouteNotFound from "./pages/RouteNotfound/index.js";
 import UpcomingBookings from "./pages/UpcomingBookings/index.js";
-import Venue from "./pages/Venue/index.js";
+import Venue from "./pages/Venue/index.jsx";
 
 export default function App() {
   return (
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<RouteNotFound />} />
           <Route path="/upcomingbookings" element={<UpcomingBookings />} />
-          <Route path="/venue" element={<Venue />} />
+          <Route path="/venue/:id" element={<Venue />} />
         </Route>
       </Routes>
     </div>
