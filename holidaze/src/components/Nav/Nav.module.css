@@ -7,8 +7,57 @@
     width: 1200px;
 }
 
+.navContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchFieldContainer {
+    min-width: 33.33%;
+}
+
+.navHeadingContainer {
+    min-width: 33.33%;
+    display: flex;
+    justify-content: center;
+}
+
+.navMenuContainer {
+    min-width: 33.33%;
+}
+
+.navMenuContainer {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
 .menuItem {
-    margin: 0 0 0 10px;
     font-size: calc(1.5rem + 0.5vw);
+}
+
+@media (width <= 450px) {
+  .navContainer {
+    flex-wrap: wrap-reverse;
+  }
+
+  .searchFieldContainer {
+    min-width: 100%;
+    
+  }
+
+  .searchFieldContainer input {
+    min-width: 100%;
+    margin: 0;
+  }
+
+  .navHeadingContainer {
+    min-width: 50%;
+    justify-content: left;
+  }
+
+  .navMenuContainer {
+    min-width: 50%;
+  }
 }
 

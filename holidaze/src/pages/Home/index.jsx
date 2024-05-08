@@ -2,6 +2,7 @@ import React from "react";
 import { useApi } from "../../hooks/useApi";
 import { ALL_VENUES_URL } from "../../constants/constants";
 import { Link } from "react-router-dom";
+import SearchField from "../../components/SearchField/SearchField";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -17,7 +18,9 @@ export default function Home() {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeContentContainer}>
-        <h2>All venues</h2>
+        <div className={styles.headingContainer}>
+          <h2>All venues</h2>
+        </div>
         <div className={styles.container}>
           {data.map((venue) => (
             <div className={styles.card} key={venue.id}>

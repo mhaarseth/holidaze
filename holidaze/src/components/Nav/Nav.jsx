@@ -2,12 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaHotel, FaUserCircle } from "react-icons/fa";
 import styles from "./Nav.module.css";
+import SearchField from "../SearchField/SearchField";
 
-function Nav() {
+export default function Nav() {
   return (
     <div className={styles.navContainer}>
-      <h1 className={styles.navTitle}>Holidaze</h1>
-      <div className={styles.menuContainer}>
+      <div className={styles.searchFieldContainer}>
+        <SearchField />
+      </div>
+      <div className={styles.navHeadingContainer}>
+        <h1 className={styles.navTitle}>Holidaze</h1>
+      </div>
+      <div className={styles.navMenuContainer}>
         <Link to="/" className={styles.menuItem}>
           <FaHotel />
         </Link>
@@ -18,5 +24,3 @@ function Nav() {
     </div>
   );
 }
-
-export default Nav;

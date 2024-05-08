@@ -1,0 +1,33 @@
+.searchContainer {
+    width: 100%;
+}
+
+.searchInputField {
+    width: 75%;
+}
+
+.searchResultsContainer {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 8px #ddd;
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 300px;
+    width: fit-content;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 1000;
+}
+
+.searchResult {
+    padding: 10px;
+    color: black;
+}
+
+.searchResult a {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: pointer;
+}
+
