@@ -59,7 +59,7 @@ export default function SearchField() {
     <div className={styles.searchContainer} ref={searchRef}>
       <input
         type="text"
-        placeholder="type to search.."
+        placeholder="Search venue name or description"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className={styles.searchInputField}
