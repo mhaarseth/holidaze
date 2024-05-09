@@ -5,11 +5,8 @@
     align-items: center;
     margin: 25px 10px 0 10px;
     width: 1200px;
-}
-
-.navContainer {
-    display: flex;
-    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .searchFieldContainer {
@@ -36,19 +33,20 @@
     font-size: calc(1.5rem + 0.5vw);
 }
 
-@media (width <= 450px) {
+@media (width <= 700px) {
   .navContainer {
     flex-wrap: wrap-reverse;
+
   }
 
   .searchFieldContainer {
-    min-width: 100%;
+    width: 100%;
   }
 
   .searchFieldContainer input {
-    min-width: 100%;
-    margin: 0;
+    width: 95%;
   }
+
 
   .navHeadingContainer {
     min-width: 50%;
