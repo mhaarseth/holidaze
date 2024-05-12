@@ -15,3 +15,6 @@ export const API_KEY_URL = "https://v2.api.noroff.dev/auth/create-api-key";
 
 // search query endpoint
 export const API_SEARCH_URL = API_URL + "venues/search?q=";
+
+// book venue endpoint
+export const BOOK_VENUE_URL = API_URL + "bookings";

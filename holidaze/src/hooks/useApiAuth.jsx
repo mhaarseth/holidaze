@@ -22,6 +22,7 @@ export function useApiAuth(url) {
             "Content-Type": "application/json",
           },
         });
+
         const json = await response.json();
         setData(json.data);
       } catch (error) {
