@@ -1,0 +1,31 @@
+.calendarContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 243px;
+}
+
+
+.guestAndSubmitButtonContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.numberOfGuestsContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+
+.numberOfGuestsContainer input {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.bookingButton {
+    margin-top: 20px;
+    width: 50%;
+}
+

@@ -9,7 +9,7 @@ import Home from "./pages/Home/index.jsx";
 import Login from "./pages/Login/index.jsx";
 import Profile from "./pages/Profile/index.js";
 import Register from "./pages/Register/index.jsx";
-import RouteNotFound from "./pages/RouteNotfound/index.js";
+import RouteNotFound from "./pages/RouteNotFound/index.jsx";
 import UpcomingBookings from "./pages/UpcomingBookings/index.js";
 import Venue from "./pages/Venue/index.jsx";
 
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/*" element={<RouteNotFound />} />
+          <Route path="*" element={<RouteNotFound />} />
           <Route path="/upcomingbookings" element={<UpcomingBookings />} />
           <Route path="/venue/:id" element={<Venue />} />
         </Route>

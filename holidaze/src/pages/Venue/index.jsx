@@ -3,7 +3,7 @@ import { useApi } from "../../hooks/useApi";
 import { ALL_VENUES_URL } from "../../constants/constants";
 import { Link } from "react-router-dom";
 
-import Booking from "../Booking";
+import Booking from "../../components/Booking/Booking";
 
 import styles from "./Venue.module.css";
 
@@ -25,8 +25,7 @@ export default function Venue() {
             )}
           </div>
           <p className={styles.venueDescription}>{venue.description}</p>
-          <div className={styles.venueButtonContainer}>
-            <h3>Availability & booking</h3>
+          <div className={styles.venueBookingContainer}>
             <Booking />
           </div>
           <div className={styles.venueInfoContainer}>

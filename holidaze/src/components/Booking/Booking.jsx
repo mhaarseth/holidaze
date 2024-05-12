@@ -9,6 +9,8 @@ import { BOOK_VENUE_URL } from "../../constants/constants";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import styles from "./Booking.module.css";
+
 export default function Booking() {
   let params = useParams();
   const venueId = params.id;
@@ -24,7 +26,7 @@ export default function Booking() {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
-  const [numberOfGuests, setNumberOfGuests] = useState(0);
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -69,6 +71,7 @@ export default function Booking() {
       });
 
       const json = await response.json();
+      console.log(json);
 
       if (!response.ok) {
         throw new Error(json.errors[0].message);
@@ -79,7 +82,8 @@ export default function Booking() {
   };
 
   return (
-    <div>
+    <div className={styles.calendarContainer}>
+      <h2>Availability & booking</h2>
       <DatePicker
         selected={startDate}
         onChange={onChange}
@@ -90,18 +94,24 @@ export default function Booking() {
         selectsDisabledDaysInRange
         inline
       />
-      <label>
-        Number of guests:
-        <input
-          name="numberOfGuests"
-          type="number"
-          value={numberOfGuests}
-          onChange={(e) => setNumberOfGuests(e.target.value)}
-        />
-      </label>
-      <button type="submit" onClick={handleSubmit}>
-        Book it!
-      </button>
+      <div className={styles.guestAndSubmitButtonContainer}>
+        <div className={styles.numberOfGuestsContainer}>
+          <label>Number of guests:</label>
+          <input
+            name="numberOfGuests"
+            type="number"
+            value={numberOfGuests}
+            onChange={(e) => setNumberOfGuests(e.target.value)}
+          />
+        </div>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className={styles.bookingButton}
+        >
+          Book it!
+        </button>
+      </div>
     </div>
   );
 }
