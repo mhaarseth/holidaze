@@ -10,9 +10,13 @@ import styles from "./Venue.module.css";
 export default function Venue() {
   let params = useParams();
   const venueId = params.id;
-  const venueUrl = ALL_VENUES_URL + venueId + "?_owner=true";
-  const fetchProduct = useApi(venueUrl);
-  const venue = fetchProduct.data;
+  const venueUrl = ALL_VENUES_URL + venueId + "?_bookings=true&_owner=true";
+  const fetchVenue = useApi(venueUrl);
+  const venue = fetchVenue.data;
+
+  if (venue.owner) {
+    console.log(venue.bookings);
+  }
 
   return (
     <div className={styles.venueContainer}>
@@ -26,7 +30,17 @@ export default function Venue() {
           </div>
           <p className={styles.venueDescription}>{venue.description}</p>
           <div className={styles.venueBookingContainer}>
-            <Booking />
+            {venue.owner &&
+            venue.owner.name === localStorage.getItem("profileName") ? (
+              <div>
+                <h3>Bookings ({venue._count.bookings})</h3>
+                {venue.bookings.map((bookingInfo) => (
+                  <div>{bookingInfo.id}</div>
+                ))}
+              </div>
+            ) : (
+              <Booking />
+            )}
           </div>
           <div className={styles.venueInfoContainer}>
             <div className={styles.venueInfoLeftContainer}>

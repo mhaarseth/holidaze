@@ -18,3 +18,6 @@ export const API_SEARCH_URL = API_URL + "venues/search?q=";
 
 // book venue endpoint
 export const BOOK_VENUE_URL = API_URL + "bookings";
+
+// profile endpoint
+export const PROFILE_BASE_URL = API_URL + "profiles/";

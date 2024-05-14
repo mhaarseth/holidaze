@@ -16,9 +16,9 @@ export function useApiAuth(url) {
 
         const response = await fetch(url, {
           method: "GET",
-          header: {
+          headers: {
             Authorization: `Bearer ${token}`,
-            "X-API-KEY": apiKey,
+            "X-Noroff-API-Key": apiKey,
             "Content-Type": "application/json",
           },
         });

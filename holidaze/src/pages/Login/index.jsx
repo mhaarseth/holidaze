@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { redirect } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Login.module.css";
@@ -41,8 +40,11 @@ export default function Login() {
       });
 
       if (response.ok) {
-        const generateToken = await response.json();
-        const getToken = generateToken.data.accessToken;
+        const json = await response.json();
+        const getToken = json.data.accessToken;
+
+        const profileName = json.data.name;
+        localStorage.setItem("profileName", profileName);
 
         localStorage.setItem("token", getToken);
         const token = localStorage.getItem("token");

@@ -7,7 +7,7 @@ import EditProfile from "./pages/EditProfile/index.js";
 import EditVenue from "./pages/EditVenue/index.js";
 import Home from "./pages/Home/index.jsx";
 import Login from "./pages/Login/index.jsx";
-import Profile from "./pages/Profile/index.js";
+import Profile from "./pages/Profile/index.jsx";
 import Register from "./pages/Register/index.jsx";
 import RouteNotFound from "./pages/RouteNotFound/index.jsx";
 import UpcomingBookings from "./pages/UpcomingBookings/index.js";

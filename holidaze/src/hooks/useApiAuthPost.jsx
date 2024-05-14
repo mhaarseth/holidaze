@@ -18,7 +18,7 @@ export function useApiAuthPost(url, options) {
           method: "POST",
           header: {
             Authorization: `Bearer ${token}`,
-            "X-API-KEY": apiKey,
+            "X-Noroff-API-Key": apiKey,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(options),
