@@ -61,7 +61,7 @@ export default function Profile() {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileContentContainer}>
-        <h2 className={styles.profileHeading}>Profile</h2>
+        <h1 className={styles.profileHeading}>Profile</h1>
         <div className={styles.profileContent}>
           <div className={styles.profileImgContainer}>
             {data.avatar && <img src={data.avatar.url} alt={data.avatar.alt} />}

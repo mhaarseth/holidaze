@@ -34,7 +34,13 @@ export default function EditProfile() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    values: {
+      profileBio: data.bio,
+      venueManager: data.venueManager,
+    },
   });
+
+  console.log(data.avatar);
 
   async function onSubmit(data) {
     const token = localStorage.getItem("token");
@@ -58,7 +64,7 @@ export default function EditProfile() {
         }),
       });
       if (response.ok) {
-        alert("Profile edited");
+        alert("Profile successfully updated");
         window.location.href = "/profile";
       }
     } catch (error) {
