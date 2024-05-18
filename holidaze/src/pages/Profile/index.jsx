@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { PROFILE_BASE_URL } from "../../constants/constants";
@@ -206,7 +206,7 @@ export default function Profile() {
               ))}
           </div>
         </div>
-        <Link to="/editprofile" className={styles.button}>
+        <Link to={`/editprofile/${data.name}`} className={styles.button}>
           Edit profile
         </Link>
         <button onClick={handleLogOut}>Log out</button>

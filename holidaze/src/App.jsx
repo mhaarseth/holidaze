@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "./components/Layout/Layout.js";
 import Booking from "./pages/Booking/index.jsx";
 import CreateVenue from "./pages/CreateVenue/index.jsx";
-import EditProfile from "./pages/EditProfile/index.js";
+import EditProfile from "./pages/EditProfile/index.jsx";
 import EditVenue from "./pages/EditVenue/index.jsx";
 import Home from "./pages/Home/index.jsx";
 import Login from "./pages/Login/index.jsx";
@@ -20,7 +20,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/booking/:id" element={<Booking />} />
           <Route path="/createvenue" element={<CreateVenue />} />
-          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/editprofile/:id" element={<EditProfile />} />
           <Route path="/editvenue/:id" element={<EditVenue />} />
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
