@@ -50,7 +50,7 @@ img {
 
 .venueName {
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: ellipsis;
 }
 
 .button {

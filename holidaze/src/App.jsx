@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import React from "react";
 import Layout from "./components/Layout/Layout.js";
 import Booking from "./pages/Booking/index.jsx";
-import CreateVenue from "./pages/CreateVenue/index.js";
+import CreateVenue from "./pages/CreateVenue/index.jsx";
 import EditProfile from "./pages/EditProfile/index.js";
-import EditVenue from "./pages/EditVenue/index.js";
+import EditVenue from "./pages/EditVenue/index.jsx";
 import Home from "./pages/Home/index.jsx";
 import Login from "./pages/Login/index.jsx";
 import Profile from "./pages/Profile/index.jsx";
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/booking/:id" element={<Booking />} />
           <Route path="/createvenue" element={<CreateVenue />} />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/editvenue" element={<EditVenue />} />
+          <Route path="/editvenue/:id" element={<EditVenue />} />
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />

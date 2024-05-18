@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useApiAuth(url) {
+export function useApiAuth(url, method = "GET") {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -15,7 +15,7 @@ export function useApiAuth(url) {
         setIsError(false);
 
         const response = await fetch(url, {
-          method: "GET",
+          method: method,
           headers: {
             Authorization: `Bearer ${token}`,
             "X-Noroff-API-Key": apiKey,
@@ -34,6 +34,6 @@ export function useApiAuth(url) {
     }
 
     getData();
-  }, [url]);
+  }, [url, method]);
   return { data, isLoading, isError };
 }

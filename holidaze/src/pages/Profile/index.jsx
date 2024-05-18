@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { PROFILE_BASE_URL } from "../../constants/constants";
+import { ALL_VENUES_URL } from "../../constants/constants";
+
 import { useApiAuth } from "../../hooks/useApiAuth";
+import ViewBookings from "../../components/ViewBookings/ViewBookings";
 
 import styles from "./Profile.module.css";
 
@@ -25,9 +28,35 @@ export default function Profile() {
   }
 
   const handleLogOut = () => {
+    alert("You have been logged out");
     localStorage.clear();
     window.location.href = "/";
   };
+
+  async function handleDelete(event) {
+    const venueId = event.target.getAttribute("data-id");
+    const venueUrl = ALL_VENUES_URL + venueId;
+
+    const token = localStorage.getItem("token");
+    const apiKey = localStorage.getItem("apiKey");
+
+    try {
+      const response = await fetch(venueUrl, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "X-Noroff-API-Key": apiKey,
+        },
+      });
+      if (response.ok) {
+        alert("Venue deleted");
+        window.location.reload();
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   return (
     <div className={styles.profileContainer}>
@@ -40,11 +69,14 @@ export default function Profile() {
           <p>
             {data.name} {data.venueManager && ` (Venue manager)`}
           </p>
-          <p>{data.email}</p>
           <p className={styles.profileDescription}>{data.bio}</p>
+          <p>{data.email}</p>
+          <Link to="/createvenue" className={styles.button}>
+            Create new venue
+          </Link>
           {data.venueManager && (
-            <>
-              <h3>Owned venues</h3>
+            <div>
+              <h2>Owned venues</h2>
               <div className={styles.cardsContainer}>
                 {data.venues &&
                   data.venues.map((venue) => (
@@ -94,12 +126,24 @@ export default function Profile() {
                           View
                         </Link>
                       </div>
+                      <div>
+                        <ViewBookings id={venue.id} />
+                      </div>
+                      <Link
+                        to={`/editvenue/${venue.id}`}
+                        className={styles.button}
+                      >
+                        Edit venue
+                      </Link>
+                      <button data-id={venue.id} onClick={handleDelete}>
+                        Delete venue
+                      </button>
                     </div>
                   ))}
               </div>
-            </>
+            </div>
           )}
-          <h3>Upcoming bookings</h3>
+          <h3>Upcoming stays:</h3>
           <div className={styles.cardsContainer}>
             {data.bookings &&
               data.bookings.map((booking) => (

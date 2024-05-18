@@ -14,10 +14,6 @@ export default function Venue() {
   const fetchVenue = useApi(venueUrl);
   const venue = fetchVenue.data;
 
-  if (venue.owner) {
-    console.log(venue.bookings);
-  }
-
   return (
     <div className={styles.venueContainer}>
       <div className={styles.venueContentContainer}>
@@ -30,17 +26,7 @@ export default function Venue() {
           </div>
           <p className={styles.venueDescription}>{venue.description}</p>
           <div className={styles.venueBookingContainer}>
-            {venue.owner &&
-            venue.owner.name === localStorage.getItem("profileName") ? (
-              <div>
-                <h3>Bookings ({venue._count.bookings})</h3>
-                {venue.bookings.map((bookingInfo) => (
-                  <div>{bookingInfo.id}</div>
-                ))}
-              </div>
-            ) : (
-              <Booking />
-            )}
+            <Booking />
           </div>
           <div className={styles.venueInfoContainer}>
             <div className={styles.venueInfoLeftContainer}>
