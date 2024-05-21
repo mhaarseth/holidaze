@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./ViewBookings.module.css";
 
 import { useApiAuth } from "../../hooks/useApiAuth";
 
@@ -13,11 +14,13 @@ export default function ViewBookings({ id }) {
 
   return (
     <div>
-      <h3>Booked dates</h3>
       {data.bookings &&
         data.bookings.map((booking) => (
-          <div key={booking.id}>
-            {booking.customer.name}
+          <div key={booking.id} className={styles.customerName}>
+            <div className={styles.bookedByContainer}>
+              Booked by
+              <span className={styles.bookedBy}> {booking.customer.name}</span>
+            </div>
             <p>
               {booking.dateFrom.split("T")[0].split("-")[2]}.
               {booking.dateFrom.split("-")[1]}.{booking.dateFrom.split("-")[0]}{" "}

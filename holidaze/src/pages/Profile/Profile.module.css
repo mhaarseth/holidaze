@@ -6,17 +6,62 @@
 .profileContentContainer {
     width: 1200px;
     margin: 0 10px 0 10px;
+    padding: 0 10px 0 10px;
 }
 
 .profileHeading {
-    margin-bottom: 10px;
+    margin: 30px 0 10px 20px;
     color: black;
+}
+
+.profileTopContent {
+    padding: 0 20px 0 20px;
+}
+
+.profileName {
+    margin: 2px 0 10px 0;
+    font-weight: bold;
+}
+
+.profileEmail {
+    margin: 10px 0 50px 0;
+    font-weight: bold;
+}
+
+.profileButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px 0 10px 0;
+}
+
+.createVenueButton {
+    width: 50%;
+}
+
+.editProfileButton {
+    width: 50%;
+}
+
+.profileOwnedVenuesHeading {
+    margin: 40px 0 10px 20px;
 }
 
 .card {
     border-radius: 10px;
     box-shadow: 0px 0px 6px #ddd;
     padding: 6px;
+    height:fit-content;
+}
+
+.upcomingStaysCard {
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+}
+
+.upcomingStaysImg {
+    margin-right: 15px;
 }
 
 .imgContainer {
@@ -39,6 +84,15 @@ img {
     justify-content: center;
     gap: 20px;
     padding: 0 10px;
+    margin: 0 0 100px 0;
+}
+
+.staysHeading {
+    margin: 0 0 20px 20px;
+}
+
+.timeOfStayHeading {
+    margin: 5px 0 5px 0;
 }
 
 .cardBottomContainer {
@@ -49,10 +103,28 @@ img {
 
 }
 
-.venueName {
-    white-space: nowrap;
-    overflow-x: ellipsis;
+.upcomingStaysImg {
+    height: 50px;
+    width: 75px;
 }
+
+.venueName {
+    color: black;
+    text-decoration: none;
+}
+
+.venueName:hover {
+    text-decoration: underline;
+}
+
+.bookingDates {
+    font-size: 1rem;;
+}
+
+.deleteVenueButton {
+    background-color: var(--alert-color);
+}
+
 
 .button {
     width: 33%;
@@ -65,4 +137,18 @@ img {
     text-decoration: none;
     font-weight: bold;
     border-radius: 10px;
+}
+
+.alertButton {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--alert-color);
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 0 auto;
 }

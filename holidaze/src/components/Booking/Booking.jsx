@@ -82,21 +82,24 @@ export default function Booking() {
   };
 
   return (
-    <div className={styles.calendarContainer}>
-      <h2>Availability & booking</h2>
-      <DatePicker
-        selected={startDate}
-        onChange={onChange}
-        startDate={startDate}
-        endDate={endDate}
-        excludeDates={excludeDates}
-        selectsRange
-        selectsDisabledDaysInRange
-        inline
-      />
-      <div className={styles.guestAndSubmitButtonContainer}>
-        <div className={styles.numberOfGuestsContainer}>
-          <label>Number of guests:</label>
+    <div className={styles.availabilityAndBookingContainer}>
+      <div className={styles.calendarContainer}>
+        <DatePicker
+          selected={startDate}
+          onChange={onChange}
+          startDate={startDate}
+          endDate={endDate}
+          excludeDates={excludeDates}
+          selectsRange
+          selectsDisabledDaysInRange
+          inline
+        />
+      </div>
+      <div className={styles.numberOfGuestsContainer}>
+        <div className={styles.guestsHeading}>
+          <label>Guests:</label>
+        </div>
+        <div className={styles.guestsNumber}>
           <input
             name="numberOfGuests"
             type="number"
@@ -104,14 +107,14 @@ export default function Booking() {
             onChange={(e) => setNumberOfGuests(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className={styles.bookingButton}
-        >
-          Book it!
-        </button>
       </div>
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        className={styles.bookingButton}
+      >
+        Book it!
+      </button>
     </div>
   );
 }

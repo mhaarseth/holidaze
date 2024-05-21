@@ -15,6 +15,11 @@
     align-items: center;
 }
 
+.homeHeading {
+    margin-left: 20px;
+    color: black;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

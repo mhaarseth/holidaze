@@ -12,10 +12,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-  profilePicture: yup.string(),
+  profilePicture: yup
+    .string()
+    .matches(
+      // eslint-disable-next-line
+      /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
+      "Valid url is required"
+    )
+    .required("Valid url is required"),
   profilePictureDescription: yup
     .string()
-    .required("Venue Picture Description is required"),
+    .required("Picture description is required"),
   profileBio: yup.string(),
   venueManager: yup.boolean(),
 });
@@ -39,8 +46,6 @@ export default function EditProfile() {
       venueManager: data.venueManager,
     },
   });
-
-  console.log(data.avatar);
 
   async function onSubmit(data) {
     const token = localStorage.getItem("token");
@@ -74,50 +79,73 @@ export default function EditProfile() {
 
   return (
     <div>
-      <h2>Update profile</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="profilePicture">Profile picture:</label>
-        {data.avatar && (
+      <h2 className={styles.editProfileHeading}>Update profile</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.editProfileForm}
+      >
+        <div className={styles.inputContainer}>
+          <label htmlFor="profilePicture" className={styles.heading}>
+            Profile picture
+          </label>
+          {data.avatar && (
+            <input
+              id="profilePicture"
+              {...register("profilePicture")}
+              defaultValue={data.avatar.url}
+              className={styles.profilePictureInput}
+            />
+          )}
+          {errors.profilePicture && (
+            <p className={styles.errorMessage}>
+              {errors.profilePicture.message}
+            </p>
+          )}
+        </div>
+
+        <div className={styles.inputContainer}>
+          <label htmlFor="profilePictureDescription" className={styles.heading}>
+            Profile picture alt. text
+          </label>
+          {data.avatar && (
+            <input
+              {...register("profilePictureDescription")}
+              defaultValue={data.avatar.alt}
+            ></input>
+          )}
+          {errors.profilePictureDescription && (
+            <p className={styles.errorMessage}>
+              {errors.profilePictureDescription.message}
+            </p>
+          )}
+        </div>
+
+        <div className={styles.inputContainer}>
+          <label htmlFor="profileBio" className={styles.heading}>
+            Profile bio
+          </label>
+          <textarea
+            {...register("profileBio")}
+            defaultValue={data.bio}
+          ></textarea>
+          {errors.profileBio && (
+            <p className={styles.errorMessage}>{errors.profileBio.message}</p>
+          )}
+        </div>
+        <div className={styles.venueManagerContainer}>
+          <label htmlFor="venueManager">Venue manager</label>
           <input
-            id="profilePicture"
-            {...register("profilePicture")}
-            defaultValue={data.avatar.url}
+            id="venueManager"
+            {...register("venueManager")}
+            type="checkbox"
+            defaultChecked={data.venueManager}
           />
-        )}
-        {errors.venuePicture && <p>{errors.venuePicture.message}</p>}
+          {errors.venueManager && <p>{errors.venueManager.message}</p>}
+        </div>
 
-        <label htmlFor="profilePictureDescription">
-          Profile picture alt. text:
-        </label>
-        {data.avatar && (
-          <input
-            {...register("profilePictureDescription")}
-            defaultValue={data.avatar.alt}
-          ></input>
-        )}
-        {errors.profilePictureDescription && (
-          <p>{errors.profilePictureDescription.message}</p>
-        )}
-
-        <label htmlFor="profileBio">Profile bio:</label>
-        <textarea
-          {...register("profileBio")}
-          defaultValue={data.bio}
-        ></textarea>
-        {errors.profileBio && <p>{errors.profileBio.message}</p>}
-
-        <label htmlFor="venueManager">Venue manager:</label>
-
-        <input
-          id="venueManager"
-          {...register("venueManager")}
-          type="checkbox"
-          defaultChecked={data.venueManager}
-        />
-
-        {errors.venueManager && <p>{errors.venueManager.message}</p>}
-
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.editProfileButton}>
+          Save changes
+        </button>
       </form>
     </div>
   );

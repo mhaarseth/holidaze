@@ -1,0 +1,15 @@
+.bookingsHeading {
+    margin: 20px 0 5px 0;
+}
+
+.customerName {
+    margin-top: 10px;
+}
+
+.bookedByContainer {
+    margin-top: 20px;
+}
+
+.bookedBy {
+    font-weight: bold;
+}

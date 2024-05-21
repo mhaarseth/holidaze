@@ -26,6 +26,7 @@ export default function Venue() {
           </div>
           <p className={styles.venueDescription}>{venue.description}</p>
           <div className={styles.venueBookingContainer}>
+            <h2>Availability & booking</h2>
             <Booking />
           </div>
           <div className={styles.venueInfoContainer}>

@@ -7,6 +7,7 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const { data, isLoading, isError } = useApi(ALL_VENUES_URL);
+  console.log(data);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -19,7 +20,7 @@ export default function Home() {
     <div className={styles.homeContainer}>
       <div className={styles.homeContentContainer}>
         <div className={styles.headingContainer}>
-          <h2>All venues</h2>
+          <h2 className={styles.homeHeading}>All venues</h2>
         </div>
         <div className={styles.container}>
           {data.map((venue) => (

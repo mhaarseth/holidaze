@@ -4,7 +4,7 @@
   --h1-font: 'Josefin Sans', sans-serif;
   --text-font: 'Dosis', sans-serif;
   --h1-size: calc(1.5rem + 1.5vw);
-  --h2-size: calc(0.8rem + 0.8vw);
+  --h2-size: calc(1.8rem);
   --h3-size: calc(1.2rem);
   --text-size: calc(1.2rem);
 }
@@ -46,6 +46,7 @@ form {
     gap: 10px;
     max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 label {

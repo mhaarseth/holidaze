@@ -19,6 +19,7 @@ export default function Profile() {
     PROFILE_BASE_URL + profileName + "?_bookings=true&_venues=true";
 
   const { data, isLoading, isError } = useApiAuth(profileUrl);
+  console.log(data);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -61,22 +62,40 @@ export default function Profile() {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileContentContainer}>
-        <h1 className={styles.profileHeading}>Profile</h1>
+        <h2 className={styles.profileHeading}>Profile</h2>
         <div className={styles.profileContent}>
-          <div className={styles.profileImgContainer}>
-            {data.avatar && <img src={data.avatar.url} alt={data.avatar.alt} />}
+          <div className={styles.profileTopContent}>
+            <div className={styles.profileImgContainer}>
+              {data.avatar && (
+                <img src={data.avatar.url} alt={data.avatar.alt} />
+              )}
+            </div>
+            <p className={styles.profileName}>
+              {data.name} {data.venueManager && ` (Venue manager)`}
+            </p>
+            <p className={styles.profileDescription}>{data.bio}</p>
+            <p className={styles.profileEmail}>{data.email}</p>
+            <div className={styles.profileButtonContainer}>
+              {data.venueManager && (
+                <Link
+                  to="/createvenue"
+                  className={`${styles.button} ${styles.createVenueButton}`}
+                >
+                  New venue
+                </Link>
+              )}
+
+              <Link
+                to={`/editprofile/${data.name}`}
+                className={`${styles.button} ${styles.editProfileButton}`}
+              >
+                Edit profile
+              </Link>
+            </div>
           </div>
-          <p>
-            {data.name} {data.venueManager && ` (Venue manager)`}
-          </p>
-          <p className={styles.profileDescription}>{data.bio}</p>
-          <p>{data.email}</p>
-          <Link to="/createvenue" className={styles.button}>
-            Create new venue
-          </Link>
           {data.venueManager && (
             <div>
-              <h2>Owned venues</h2>
+              <h2 className={styles.profileOwnedVenuesHeading}>Owned venues</h2>
               <div className={styles.cardsContainer}>
                 {data.venues &&
                   data.venues.map((venue) => (
@@ -99,12 +118,12 @@ export default function Profile() {
                           <p>
                             {venue.location.city !== null &&
                             venue.location.city &&
-                            venue.location.city.length > 12
-                              ? `${venue.location.city.slice(0, 13)}..`
+                            venue.location.city.length > 8
+                              ? `${venue.location.city.slice(0, 9)}..`
                               : ""}
                             {venue.location.city !== null &&
                             venue.location.city &&
-                            venue.location.city.length < 13
+                            venue.location.city.length < 9
                               ? `${venue.location.city}`
                               : ""}
                             {venue.location.country !== null &&
@@ -119,6 +138,7 @@ export default function Profile() {
                               : ""}
                           </p>
                         </div>
+
                         <Link
                           to={`/venue/${venue.id}`}
                           className={styles.button}
@@ -129,87 +149,72 @@ export default function Profile() {
                       <div>
                         <ViewBookings id={venue.id} />
                       </div>
-                      <Link
-                        to={`/editvenue/${venue.id}`}
-                        className={styles.button}
-                      >
-                        Edit venue
-                      </Link>
-                      <button data-id={venue.id} onClick={handleDelete}>
-                        Delete venue
-                      </button>
+                      <div className={styles.profileButtonContainer}>
+                        <Link
+                          to={`/editvenue/${venue.id}`}
+                          className={styles.button}
+                        >
+                          Edit venue
+                        </Link>
+                        <button
+                          data-id={venue.id}
+                          onClick={handleDelete}
+                          className={styles.deleteVenueButton}
+                        >
+                          Delete venue
+                        </button>
+                      </div>
                     </div>
                   ))}
               </div>
             </div>
           )}
-          <h3>Upcoming stays:</h3>
+          <h2 className={styles.staysHeading}>Upcoming stays</h2>
           <div className={styles.cardsContainer}>
             {data.bookings &&
               data.bookings.map((booking) => (
-                <div className={styles.card} key={booking.id}>
-                  <h3>Time of stay</h3>
-                  <p>
-                    {booking.dateFrom.split("T")[0].split("-")[2]}.
-                    {booking.dateFrom.split("-")[1]}.
-                    {booking.dateFrom.split("-")[0]} -{" "}
-                    {booking.dateTo.split("T")[0].split("-")[2]}.
-                    {booking.dateTo.split("-")[1]}.
-                    {booking.dateTo.split("-")[0]}
-                  </p>
-                  <div className={styles.imgContainer}>
+                <div className={styles.upcomingStaysCard} key={booking.id}>
+                  <Link to={`/venue/${booking.venue.id}`}>
                     {booking.venue.media.length > 0 && (
                       <img
                         src={booking.venue.media[0].url}
                         alt={booking.venue.media[0].alt}
+                        className={styles.upcomingStaysImg}
                       />
                     )}
-                  </div>
+                  </Link>
                   <div className={styles.cardBottomContainer}>
                     <div className={styles.cardTextContainer}>
-                      <h3 className={styles.venueName}>
-                        {booking.venue.name.length > 20
-                          ? `${booking.venue.name.slice(0, 20)}...`
-                          : `${booking.venue.name}`}
-                      </h3>
                       <p>
-                        {booking.venue.location.city !== null &&
-                        booking.venue.location.city &&
-                        booking.venue.location.city.length > 12
-                          ? `${booking.venue.location.city.slice(0, 13)}..`
-                          : ""}
-                        {booking.venue.location.city !== null &&
-                        booking.venue.location.city &&
-                        booking.venue.location.city.length < 13
-                          ? `${booking.venue.location.city}`
-                          : ""}
-                        {booking.venue.location.country !== null &&
-                        booking.venue.location.city &&
-                        booking.venue.location.city.length > 12
-                          ? `${booking.venue.location.city.slice(0, 13)}..`
-                          : ""}
-                        {booking.venue.location.country !== null &&
-                        booking.venue.location.city &&
-                        booking.venue.location.city.length < 13
-                          ? `, ${booking.venue.location.country}`
-                          : ""}
+                        <Link
+                          to={`/venue/${booking.venue.id}`}
+                          className={styles.venueName}
+                        >
+                          <h3>
+                            {booking.venue.name.length > 20
+                              ? `${booking.venue.name.slice(0, 20)}...`
+                              : `${booking.venue.name}`}
+                          </h3>
+                        </Link>
+                      </p>
+                      <p className={styles.bookingDates}>
+                        {booking.dateFrom.split("T")[0].split("-")[2]}.
+                        {booking.dateFrom.split("-")[1]}.
+                        {booking.dateFrom.split("-")[0]} -{" "}
+                        {booking.dateTo.split("T")[0].split("-")[2]}.
+                        {booking.dateTo.split("-")[1]}.
+                        {booking.dateTo.split("-")[0]}
                       </p>
                     </div>
-                    <Link
-                      to={`/venue/${booking.venue.id}`}
-                      className={styles.button}
-                    >
-                      View
-                    </Link>
                   </div>
                 </div>
               ))}
           </div>
         </div>
-        <Link to={`/editprofile/${data.name}`} className={styles.button}>
-          Edit profile
-        </Link>
-        <button onClick={handleLogOut}>Log out</button>
+
+        <button onClick={handleLogOut} className={styles.alertButton}>
+          Log out
+        </button>
       </div>
     </div>
   );

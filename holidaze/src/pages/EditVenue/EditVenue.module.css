@@ -1,0 +1,54 @@
+.editVenueHeading {
+    margin: 0 auto;
+    padding: 40px 0 0 20px;
+    width: 1200px;
+
+}
+
+.createVenueForm {
+    padding: 20px;
+}
+
+.heading {
+    margin-bottom: 5px;
+}
+
+.inputContainer {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 10px 0;
+}
+
+.errorMessage {
+    position: absolute;
+    top: 67px;
+    font-weight: bold;
+    color: var(--alert-color);
+}
+
+.errorMessageVenueDescription {
+    position: absolute;
+    top: 140px;
+    font-weight: bold;
+    color: var(--alert-color);
+}
+
+textarea {
+    height: 100px;
+}
+
+.venueManagerContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: end;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}

@@ -13,15 +13,17 @@ import * as yup from "yup";
 
 const schema = yup.object({
   venueName: yup.string().required("Venue Name is required"),
-  venuePicture: yup.string().required("Venue Picture is required"),
-  venuePictureDescription: yup
-    .string()
-    .required("Venue Picture Description is required"),
+  venuePicture: yup.string().matches(
+    // eslint-disable-next-line
+    /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
+    "Valid url is required"
+  ),
+  venuePictureDescription: yup.string(),
   venueDescription: yup.string().required("Venue Description is required"),
   address: yup.string(),
-  town: yup.string().required("Town is required"),
-  zipCode: yup.number().positive().integer(),
-  country: yup.string().required("Country is required"),
+  town: yup.string(),
+  zipCode: yup.string(),
+  country: yup.string(),
   maxGuests: yup
     .number()
     .required("Max Guests is required")
@@ -40,6 +42,7 @@ export default function EditVenue() {
   const venueUrl = ALL_VENUES_URL + venueId;
 
   const { data } = useApiAuth(venueUrl);
+  console.log(data);
 
   const {
     register,
@@ -47,6 +50,10 @@ export default function EditVenue() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    values: {
+      venueName: data.name,
+      venueDescription: data.description,
+    },
   });
 
   async function onSubmit(data) {
@@ -81,7 +88,7 @@ export default function EditVenue() {
           location: {
             address: data.address,
             city: data.town,
-            zip: data.zip,
+            zip: data.zipCode,
             country: data.country,
           },
         }),
@@ -96,147 +103,202 @@ export default function EditVenue() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="venueName">Venue name:</label>
-      <input
-        id="venueName"
-        {...register("venueName")}
-        defaultValue={data.name}
-      />
-      {errors.venueName && <p>{errors.venueName.message}</p>}
+    <div lassName={styles.editVenueContainer}>
+      <h2 className={styles.editVenueHeading}>Edit venue</h2>
 
-      <label htmlFor="venuePicture">Venue Picture:</label>
-      {data.media && (
-        <input
-          id="venuePicture"
-          {...register("venuePicture")}
-          defaultValue={data.media[0].url}
-        />
-      )}
-      {errors.venuePicture && <p>{errors.venuePicture.message}</p>}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputContainer}>
+          <label htmlFor="venueName" className={styles.heading}>
+            Venue name:
+          </label>
+          <input
+            id="venueName"
+            {...register("venueName")}
+            defaultValue={data.name}
+          />
+          {errors.venueName && <p>{errors.venueName.message}</p>}
+        </div>
 
-      <label htmlFor="venuePictureDescription">Venue picture alt. text:</label>
-      {data.media && (
-        <input
-          {...register("venuePictureDescription")}
-          defaultValue={data.media[0].alt}
-        ></input>
-      )}
-      {errors.venuePictureDescription && (
-        <p>{errors.venuePictureDescription.message}</p>
-      )}
+        <div className={styles.inputContainer}>
+          <label htmlFor="venuePicture" className={styles.heading}>
+            Venue Picture:
+          </label>
+          {data.media && (
+            <input
+              id="venuePicture"
+              {...register("venuePicture")}
+              defaultValue={data.media[0].url}
+            />
+          )}
+          {errors.venuePicture && <p>{errors.venuePicture.message}</p>}
+        </div>
 
-      <label htmlFor="venueDescription">Venue Description:</label>
-      <textarea
-        {...register("venueDescription")}
-        defaultValue={data.description}
-      ></textarea>
-      {errors.venueDescription && <p>{errors.venueDescription.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="venuePictureDescription" className={styles.heading}>
+            Venue picture alt. text:
+          </label>
+          {data.media && (
+            <input
+              {...register("venuePictureDescription")}
+              defaultValue={data.media[0].alt}
+            ></input>
+          )}
+          {errors.venuePictureDescription && (
+            <p>{errors.venuePictureDescription.message}</p>
+          )}
+        </div>
 
-      <label htmlFor="address">Address:</label>
-      {data.location && (
-        <input
-          id="address"
-          {...register("address")}
-          defaultValue={data.location.address}
-        />
-      )}
-      {errors.address && <p>{errors.address.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="venueDescription" className={styles.heading}>
+            Venue Description:
+          </label>
+          <textarea
+            {...register("venueDescription")}
+            defaultValue={data.description}
+          ></textarea>
+          {errors.venueDescription && (
+            <p className={styles.errorMessageVenueDescription}>
+              {errors.venueDescription.message}
+            </p>
+          )}
+        </div>
 
-      <label htmlFor="town">City:</label>
-      {data.location && (
-        <input
-          id="town"
-          {...register("town")}
-          defaultValue={data.location.city}
-        />
-      )}
-      {errors.town && <p>{errors.town.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="address" className={styles.heading}>
+            Address:
+          </label>
+          {data.location && (
+            <input
+              id="address"
+              {...register("address")}
+              defaultValue={data.location.address}
+            />
+          )}
+          {errors.address && <p>{errors.address.message}</p>}
+        </div>
 
-      <label htmlFor="zipCode">Zip Code:</label>
-      {data.location && (
-        <input
-          id="zipCode"
-          {...register("zipCode")}
-          type="number"
-          defaultValue={data.location.zip}
-        />
-      )}
-      {errors.zipCode && <p>{errors.zipCode.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="town" className={styles.heading}>
+            City:
+          </label>
+          {data.location && (
+            <input
+              id="town"
+              {...register("town")}
+              defaultValue={data.location.city}
+            />
+          )}
+          {errors.town && <p>{errors.town.message}</p>}
+        </div>
 
-      <label htmlFor="country">Country:</label>
-      {data.location && (
-        <input
-          id="country"
-          {...register("country")}
-          defaultValue={data.location.country}
-        />
-      )}
-      {errors.country && <p>{errors.country.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="zipCode" className={styles.heading}>
+            Zip Code:
+          </label>
+          {data.location && (
+            <input
+              id="zipCode"
+              {...register("zipCode")}
+              defaultValue={data.location.zip}
+            />
+          )}
+          {errors.zipCode && <p>{errors.zipCode.message}</p>}
+        </div>
 
-      <label htmlFor="maxGuests">Max Guests:</label>
-      <input
-        id="maxGuests"
-        {...register("maxGuests")}
-        type="number"
-        defaultValue={data.maxGuests}
-      />
-      {errors.maxGuests && <p>{errors.maxGuests.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="country" className={styles.heading}>
+            Country:
+          </label>
+          {data.location && (
+            <input
+              id="country"
+              {...register("country")}
+              defaultValue={data.location.country}
+            />
+          )}
+          {errors.country && <p>{errors.country.message}</p>}
+        </div>
 
-      <label htmlFor="price">Price:</label>
-      <input
-        id="price"
-        {...register("price")}
-        type="number"
-        defaultValue={data.price}
-      />
-      {errors.price && <p>{errors.price.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="maxGuests" className={styles.heading}>
+            Max Guests:
+          </label>
+          <input
+            id="maxGuests"
+            {...register("maxGuests")}
+            type="number"
+            defaultValue={data.maxGuests}
+          />
+          {errors.maxGuests && <p>{errors.maxGuests.message}</p>}
+        </div>
 
-      <label htmlFor="breakfast">Breakfast:</label>
-      {data.meta && (
-        <input
-          id="breakfast"
-          {...register("breakfast")}
-          type="checkbox"
-          defaultChecked={data.meta.breakfast}
-        />
-      )}
-      {errors.breakfast && <p>{errors.breakfast.message}</p>}
+        <div className={styles.inputContainer}>
+          <label htmlFor="price" className={styles.heading}>
+            Price:
+          </label>
+          <input
+            id="price"
+            {...register("price")}
+            type="number"
+            defaultValue={data.price}
+          />
+          {errors.price && <p>{errors.price.message}</p>}
+        </div>
 
-      <label htmlFor="pets">Pets:</label>
-      {data.meta && (
-        <input
-          id="pets"
-          {...register("pets")}
-          type="checkbox"
-          defaultChecked={data.meta.pets}
-        />
-      )}
-      {errors.pets && <p>{errors.pets.message}</p>}
+        <div className={styles.checkboxContainer}>
+          <label htmlFor="breakfast">Breakfast:</label>
+          {data.meta && (
+            <input
+              id="breakfast"
+              {...register("breakfast")}
+              type="checkbox"
+              defaultChecked={data.meta.breakfast}
+            />
+          )}
+          {errors.breakfast && <p>{errors.breakfast.message}</p>}
+        </div>
 
-      <label htmlFor="parking">Parking:</label>
-      {data.meta && (
-        <input
-          id="parking"
-          {...register("parking")}
-          type="checkbox"
-          defaultChecked={data.meta.parking}
-        />
-      )}
-      {errors.parking && <p>{errors.parking.message}</p>}
+        <div className={styles.checkboxContainer}>
+          <label htmlFor="pets">Pets:</label>
+          {data.meta && (
+            <input
+              id="pets"
+              {...register("pets")}
+              type="checkbox"
+              defaultChecked={data.meta.pets}
+            />
+          )}
+          {errors.pets && <p>{errors.pets.message}</p>}
+        </div>
 
-      <label htmlFor="wifi">WiFi:</label>
-      {data.meta && (
-        <input
-          id="wifi"
-          {...register("wifi")}
-          type="checkbox"
-          defaultChecked={data.meta.wifi}
-        />
-      )}
-      {errors.wifi && <p>{errors.wifi.message}</p>}
+        <div className={styles.checkboxContainer}>
+          <label htmlFor="parking">Parking:</label>
+          {data.meta && (
+            <input
+              id="parking"
+              {...register("parking")}
+              type="checkbox"
+              defaultChecked={data.meta.parking}
+            />
+          )}
+          {errors.parking && <p>{errors.parking.message}</p>}
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <div className={styles.checkboxContainer}>
+          <label htmlFor="wifi">WiFi:</label>
+          {data.meta && (
+            <input
+              id="wifi"
+              {...register("wifi")}
+              type="checkbox"
+              defaultChecked={data.meta.wifi}
+            />
+          )}
+          {errors.wifi && <p>{errors.wifi.message}</p>}
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
