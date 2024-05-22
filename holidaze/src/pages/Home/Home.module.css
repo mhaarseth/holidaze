@@ -13,11 +13,20 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin: 20px 0;
 }
 
-.homeHeading {
-    margin-left: 20px;
-    color: black;
+.headingContainer h2 {
+    margin: 0 0 10px 0;
+    min-width: 175px;
+}
+
+.sortingFields {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .container {
