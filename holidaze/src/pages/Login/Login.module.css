@@ -6,8 +6,15 @@
 .loginContentContainer {
     width: 1200px;
     margin: 0 10px 0 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .loginHeading {
     margin-bottom: 50px;
+}
+
+.registerLinkContainer {
+    margin: 0 auto;
+    padding-top: 20px;
 }

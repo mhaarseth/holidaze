@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useParams } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
 import { ALL_VENUES_URL } from "../../constants/constants";
@@ -11,8 +13,11 @@ export default function Venue() {
   let params = useParams();
   const venueId = params.id;
   const venueUrl = ALL_VENUES_URL + venueId + "?_bookings=true&_owner=true";
-  const fetchVenue = useApi(venueUrl);
-  const venue = fetchVenue.data;
+  const data = useApi(venueUrl);
+
+  const venue = data.data;
+
+  console.log(venue);
 
   return (
     <div className={styles.venueContainer}>
@@ -20,8 +25,10 @@ export default function Venue() {
         <h2 className={styles.venueHeading}>{venue.name}</h2>
         <div className={styles.venueContent}>
           <div className={styles.venueImgContainer}>
-            {venue.media && (
+            {venue && venue.media && venue.media.length > 0 ? (
               <img src={venue.media[0].url} alt={venue.media[0].alt} />
+            ) : (
+              <p>No venue image available</p>
             )}
           </div>
           <p className={styles.venueDescription}>{venue.description}</p>
@@ -34,8 +41,12 @@ export default function Venue() {
               <div className={styles.venueAddressContainer}>
                 {venue.location && (
                   <div>
-                    <p>{venue.location.city}</p>
-                    <p>{venue.location.country}</p>
+                    <p className={styles.venueLocation}>
+                      {venue.location.city}
+                    </p>
+                    <p className={styles.venueLocation}>
+                      {venue.location.country}
+                    </p>
                   </div>
                 )}
               </div>

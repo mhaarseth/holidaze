@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -84,6 +86,9 @@ export default function Login() {
             <p>{errors.password?.message}</p>
             <button type="submit">Log in</button>
           </form>
+        </div>
+        <div className={styles.registerLinkContainer}>
+          Not registered yet? <Link to={"../register"}>Go register!</Link>
         </div>
       </div>
     </div>

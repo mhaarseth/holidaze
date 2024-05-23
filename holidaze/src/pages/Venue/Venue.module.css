@@ -10,6 +10,17 @@
 
 .venueHeading {
     margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+.venueDescription {
+  overflow-wrap: break-word;
+}
+
+.venueLocation {
+  width: 300px;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .venueDescription, 

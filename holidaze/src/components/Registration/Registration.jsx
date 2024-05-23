@@ -53,6 +53,9 @@ export default function Registration() {
       if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.errors[0].message);
+      } else {
+        alert("Successfully registered!");
+        window.location.href = "/login";
       }
     } catch (error) {
       alert(error);

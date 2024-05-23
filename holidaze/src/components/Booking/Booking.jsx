@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import { useApiAuth } from "../../hooks/useApiAuth";
@@ -108,13 +109,19 @@ export default function Booking() {
           />
         </div>
       </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
-        className={styles.bookingButton}
-      >
-        Book it!
-      </button>
+      {localStorage.getItem("token") ? (
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className={styles.bookingButton}
+        >
+          Book it!
+        </button>
+      ) : (
+        <div className={styles.loginLink}>
+          Please <Link to={"../login"}>log in</Link> to book a venue.
+        </div>
+      )}
     </div>
   );
 }

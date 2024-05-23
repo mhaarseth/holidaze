@@ -19,7 +19,6 @@ export default function Profile() {
     PROFILE_BASE_URL + profileName + "?_bookings=true&_venues=true";
 
   const { data, isLoading, isError } = useApiAuth(profileUrl);
-  console.log(data);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -51,7 +50,7 @@ export default function Profile() {
         },
       });
       if (response.ok) {
-        alert("Venue deleted");
+        alert("Venue deleted!");
         window.location.reload();
       }
     } catch (error) {
@@ -146,6 +145,7 @@ export default function Profile() {
                           View
                         </Link>
                       </div>
+
                       <div>
                         <ViewBookings id={venue.id} />
                       </div>
