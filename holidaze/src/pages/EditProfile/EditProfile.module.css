@@ -1,13 +1,11 @@
 .editProfileHeading {
     margin: 0 auto;
     padding: 40px 0 0 20px;
-    width: 1200px;
+    max-width: 1200px;
 
 }
 
-.editProfileButton {
-    margin-top: 30px;
-}
+
 
 .editProfileForm {
     padding: 20px;
@@ -41,4 +39,34 @@ textarea {
     flex-direction: row;
     gap: 10px;
     align-items: end;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.editProfileButton {
+    margin-top: 30px;
+    width: 200px;
+}
+
+.cancelEditProfileButton {
+    background-color: transparent;
+    border: 2px solid var(--alert-color);
+    color: black;
+    font-weight: bold;
+    width: 200px;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modalCloseButton {
+    margin-top: 30px;
+    width: 100px;
 }

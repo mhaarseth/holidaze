@@ -4,9 +4,8 @@
 }
 
 .profileContentContainer {
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 10px 0 10px;
-    padding: 0 10px 0 10px;
 }
 
 .headingContainer {
@@ -40,10 +39,6 @@
 }
 
 .createVenueButton {
-    width: 50%;
-}
-
-.editProfileButton {
     width: 50%;
 }
 
@@ -156,3 +151,13 @@ img {
     border-radius: 10px;
     margin: 0 auto;
 }
+
+
+
+.editProfileButton {
+    background-color: transparent;
+    border: 2px solid var(--main-theme-color);
+    color: black;
+    font-weight: normal;
+}
+

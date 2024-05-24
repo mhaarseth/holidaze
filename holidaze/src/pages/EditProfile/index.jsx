@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import styles from "./EditProfile.module.css";
 
@@ -69,7 +69,6 @@ export default function EditProfile() {
         }),
       });
       if (response.ok) {
-        alert("Profile successfully updated");
         window.location.href = "/profile";
       }
     } catch (error) {
@@ -142,11 +141,20 @@ export default function EditProfile() {
           />
           {errors.venueManager && <p>{errors.venueManager.message}</p>}
         </div>
-
-        <button type="submit" className={styles.editProfileButton}>
-          Save changes
-        </button>
+        <div className={styles.buttonContainer}>
+          <button type="submit" className={styles.editProfileButton}>
+            Save changes
+          </button>
+        </div>
       </form>
+      <div className={styles.buttonContainer}>
+        <button
+          onClick={() => window.history.back()}
+          className={styles.cancelEditProfileButton}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

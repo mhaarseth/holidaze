@@ -94,7 +94,6 @@ export default function EditVenue() {
         }),
       });
       if (response.ok) {
-        alert("Venue edited");
         window.location.href = "/profile";
       }
     } catch (error) {
@@ -296,9 +295,20 @@ export default function EditVenue() {
           )}
           {errors.wifi && <p>{errors.wifi.message}</p>}
         </div>
-
-        <button type="submit">Submit</button>
+        <div className={styles.buttonContainer}>
+          <button type="submit" className={styles.editVenueButton}>
+            Save changes
+          </button>
+        </div>
       </form>
+      <div className={styles.buttonContainer}>
+        <button
+          onClick={() => window.history.back()}
+          className={styles.cancelEditProfileButton}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

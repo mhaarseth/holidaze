@@ -1,7 +1,7 @@
 .editVenueHeading {
     margin: 0 auto;
     padding: 40px 0 0 20px;
-    width: 1200px;
+    max-width: 1200px;
 
 }
 
@@ -51,4 +51,23 @@ textarea {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.editVenueButton {
+    margin-top: 30px;
+    width: 200px;
+}
+
+.cancelEditProfileButton {
+    background-color: transparent;
+    border: 2px solid var(--alert-color);
+    color: black;
+    font-weight: bold;
+    width: 200px;
 }

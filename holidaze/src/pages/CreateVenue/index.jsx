@@ -93,7 +93,6 @@ export default function EditVenue() {
         }),
       });
       if (response.ok) {
-        alert("Venue created");
         window.location.href = "/profile";
       }
     } catch (error) {
@@ -252,8 +251,18 @@ export default function EditVenue() {
           )}
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.createVenueButton}>
+          Submit
+        </button>
       </form>
+      <div className={styles.buttonContainer}>
+        <button
+          onClick={() => window.history.back()}
+          className={styles.cancelEditProfileButton}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

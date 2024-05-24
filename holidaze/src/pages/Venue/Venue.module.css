@@ -4,7 +4,7 @@
 }
 
 .venueContentContainer {
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 10px 0 10px;
 }
 
@@ -20,7 +20,7 @@
 .venueLocation {
   width: 300px;
   overflow-wrap: break-word;
-  word-break: break-all;
+
 }
 
 .venueDescription, 
