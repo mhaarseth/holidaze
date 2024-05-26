@@ -7,6 +7,7 @@ import ViewBookings from "../../components/ViewBookings/ViewBookings";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
+
   const profileName = localStorage.getItem("profileName");
   const profileUrl =
     PROFILE_BASE_URL + profileName + "?_bookings=true&_venues=true";
@@ -22,6 +23,12 @@ export default function Profile() {
         Could not load data from server.
       </div>
     );
+  }
+
+    if (!localStorage.getItem("token")) {
+    return (
+      <div className={styles.loginLink}><Link to="./login">Login</Link> to view your profile</div>
+    )
   }
 
   const handleLogOut = () => {
