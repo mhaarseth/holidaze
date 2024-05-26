@@ -1,5 +1,5 @@
 
-# **Semester Exam 2 - Hilodaze**
+# **Semester Exam 2 - Holidaze**
 
 ## Assignment brief and goal
 
