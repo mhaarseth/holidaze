@@ -3,6 +3,19 @@
     justify-content: center;
 }
 
+.loadingMessage {
+    margin: 0 auto;
+    padding-top: 100px;
+    font-weight: bold;
+}
+
+.errorMessage {
+    margin: 0 auto;
+    padding-top: 100px;
+    color: var(--alert-color);
+    font-weight: bold;
+}
+
 .homeContentContainer {
     width: 1200px;
     margin: 25px 10px 0 10px;

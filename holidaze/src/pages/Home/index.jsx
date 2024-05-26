@@ -12,10 +12,10 @@ export default function Home() {
   const { data, isLoading, isError } = useApi(sortedResults);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.loadingMessage}>Loading...</div>;
   }
   if (isError) {
-    return <div>Error loading data</div>;
+    return <div className={styles.errorMessage}>Error loading data</div>;
   }
 
   const handleSortOrder = (event) => {

@@ -66,14 +66,14 @@ export default function Registration() {
       <h2 className={styles.registrationHeading}>Registration</h2>
       <div className={styles.registrationFormContainer}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Name</label>
-          <input type="text" {...register("name")} />
+          <label htmlFor="name">Name</label>
+          <input id="name" type="text" {...register("name")} />
           <p>{errors.name?.message}</p>
-          <label>E-mail address</label>
-          <input type="email" {...register("email")} />
+          <label htmlFor="eMail">E-mail address</label>
+          <input id="eMail" type="email" {...register("email")} />
           <p>{errors.email?.message}</p>
-          <label>Password</label>
-          <input type="password" {...register("password")} />
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" {...register("password")} />
           <p>{errors.password?.message}</p>
           <div className={styles.registrationRoleChoiceContainer}>
             <label>Role</label>

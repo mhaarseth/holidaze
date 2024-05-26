@@ -98,10 +98,11 @@ export default function Booking() {
       </div>
       <div className={styles.numberOfGuestsContainer}>
         <div className={styles.guestsHeading}>
-          <label>Guests:</label>
+          <label htmlFor="maxGuests">Guests:</label>
         </div>
         <div className={styles.guestsNumber}>
           <input
+            id="maxGuests"
             name="numberOfGuests"
             type="number"
             value={numberOfGuests}

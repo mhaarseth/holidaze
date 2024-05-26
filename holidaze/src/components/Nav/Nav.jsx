@@ -14,10 +14,14 @@ export default function Nav() {
         <h1 className={styles.navTitle}>Holidaze</h1>
       </div>
       <div className={styles.navMenuContainer}>
-        <Link to="/" className={styles.menuItem}>
+        <Link to="/" className={styles.menuItem} aria-label="Link to venues">
           <FaHotel />
         </Link>
-        <Link to="/profile" className={styles.menuItem}>
+        <Link
+          to="/profile"
+          className={styles.menuItem}
+          aria-label="Link to profile"
+        >
           <FaUserCircle />
         </Link>
       </div>

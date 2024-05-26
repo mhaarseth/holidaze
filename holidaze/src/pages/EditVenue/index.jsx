@@ -148,6 +148,7 @@ export default function EditVenue() {
           </label>
           {data.media && (
             <input
+              id="venuePictureDescription"
               {...register("venuePictureDescription")}
               defaultValue={data.media[0].alt}
             ></input>
@@ -164,6 +165,7 @@ export default function EditVenue() {
             Venue Description:
           </label>
           <textarea
+            id="venueDescription"
             {...register("venueDescription")}
             defaultValue={data.description}
           ></textarea>

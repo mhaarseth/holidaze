@@ -1,0 +1,6 @@
+.routeNotFoundContainer {
+    margin: 0 auto;
+    padding-top: 100px;
+    color: var(--alert-color);
+    font-weight: bold;
+}

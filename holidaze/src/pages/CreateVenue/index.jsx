@@ -125,7 +125,10 @@ export default function EditVenue() {
           <label htmlFor="venuePictureDescription" className={styles.heading}>
             Venue picture description:
           </label>
-          <input {...register("venuePictureDescription")}></input>
+          <input
+            id="venuePictureDescription"
+            {...register("venuePictureDescription")}
+          ></input>
           {errors.venuePictureDescription && (
             <p className={styles.errorMessage}>
               {errors.venuePictureDescription.message}
@@ -137,7 +140,10 @@ export default function EditVenue() {
           <label htmlFor="venueDescription" className={styles.heading}>
             Venue description:
           </label>
-          <textarea {...register("venueDescription")}></textarea>
+          <textarea
+            id="venueDescription"
+            {...register("venueDescription")}
+          ></textarea>
           {errors.venueDescription && (
             <p className={styles.errorMessageVenueDescription}>
               {errors.venueDescription.message}

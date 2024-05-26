@@ -101,10 +101,11 @@ export default function EditProfile() {
 
         <div className={styles.inputContainer}>
           <label htmlFor="profilePictureDescription" className={styles.heading}>
-            Profile picture alt. text
+            Profile picture description
           </label>
           {data.avatar && (
             <input
+              id="profilePictureDescription"
               {...register("profilePictureDescription")}
               defaultValue={data.avatar.alt}
             ></input>
@@ -121,6 +122,7 @@ export default function EditProfile() {
             Profile bio
           </label>
           <textarea
+            id="profileBio"
             {...register("profileBio")}
             defaultValue={data.bio}
           ></textarea>

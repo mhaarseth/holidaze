@@ -32,6 +32,7 @@ export default function SearchField() {
     if (query) {
       search();
     }
+    // eslint-disable-next-line
   }, [query]);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ export default function SearchField() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className={styles.searchInputField}
+        aria-label="Search"
       />
       <div className={styles.searchResultsContainer}>
         {searchResults.map((venue) => (

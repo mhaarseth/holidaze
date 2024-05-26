@@ -3,6 +3,19 @@
     margin: 0 auto;
 }
 
+.loadingMessage {
+    margin: 0 auto;
+    padding-top: 100px;
+    font-weight: bold;
+}
+
+.errorMessage {
+    margin: 0 auto;
+    padding-top: 100px;
+    color: var(--alert-color);
+    font-weight: bold;
+}
+
 .headingContainer {
     margin-left: 20px;
 }
@@ -14,6 +27,7 @@
 
 .profileImgContainer {
     height: 40vh;
+    margin-bottom: 15px;
   }
 
 .profileTopContent {
@@ -111,10 +125,6 @@ img {
     text-decoration: none;
 }
 
-.venueName:hover {
-    text-decoration: underline;
-}
-
 .bookingDates {
     font-size: 1rem;;
 }
@@ -126,6 +136,7 @@ img {
 
 .button {
     width: 33%;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;

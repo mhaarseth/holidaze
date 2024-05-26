@@ -78,11 +78,11 @@ export default function Login() {
         <h2 className={styles.loginHeading}>Login</h2>
         <div className={styles.loginFormContainer}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label>E-mail address</label>
-            <input type="email" {...register("email")} />
+            <label htmlFor="eMail">E-mail address</label>
+            <input id="eMail" type="email" {...register("email")} />
             <p>{errors.email?.message}</p>
-            <label>Password</label>
-            <input type="password" {...register("password")} />
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" {...register("password")} />
             <p>{errors.password?.message}</p>
             <button type="submit">Log in</button>
           </form>

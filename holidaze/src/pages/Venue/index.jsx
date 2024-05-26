@@ -9,9 +9,20 @@ export default function Venue() {
   let params = useParams();
   const venueId = params.id;
   const venueUrl = ALL_VENUES_URL + venueId + "?_bookings=true&_owner=true";
-  const data = useApi(venueUrl);
+  const { data, isLoading, isError } = useApi(venueUrl);
 
-  const venue = data.data;
+  const venue = data;
+
+  if (isLoading) {
+    return <div className={styles.loadingMessage}>Loading...</div>;
+  }
+  if (isError) {
+    return (
+      <div className={styles.errorMessage}>
+        Could not load data from server.
+      </div>
+    );
+  }
 
   return (
     <div className={styles.venueContainer}>
