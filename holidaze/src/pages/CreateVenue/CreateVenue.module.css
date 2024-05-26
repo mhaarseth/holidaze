@@ -1,7 +1,7 @@
 .createVenueHeading {
     margin: 0 auto;
     padding: 40px 0 0 20px;
-    width: 1200px;
+    max-width: 1200px;
 
 }
 
