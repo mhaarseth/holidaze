@@ -8,7 +8,9 @@ import styles from "./Profile.module.css";
 
 export default function Profile() {
   if (!localStorage.getItem("token")) {
-    window.location.href = "/login";
+    return (
+      <div className={styles.loginLink}><Link to="./login">Login</Link> to view your profile</div>
+    )
   }
 
   const profileName = localStorage.getItem("profileName");
