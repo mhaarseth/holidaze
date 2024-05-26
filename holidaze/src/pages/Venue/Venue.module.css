@@ -1,11 +1,12 @@
-.venueContainer {
-    display: flex;
-    justify-content: center;
-}
-
 .venueContentContainer {
     max-width: 1200px;
-    margin: 0 10px 0 10px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.venueContent {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .venueHeading {
@@ -13,12 +14,15 @@
     overflow-wrap: break-word;
 }
 
+.venueImgContainer {
+    height: 40vh;
+  }
+
 .venueDescription {
   overflow-wrap: break-word;
 }
 
 .venueLocation {
-  width: 300px;
   overflow-wrap: break-word;
 
 }

@@ -1,11 +1,6 @@
-.profileContainer {
-    display: flex;
-    justify-content: center;
-}
-
 .profileContentContainer {
     max-width: 1200px;
-    margin: 0 10px 0 10px;
+    margin: 0 auto;
 }
 
 .headingContainer {
@@ -16,6 +11,10 @@
     margin: 30px 0 10px 20px;
     color: black;
 }
+
+.profileImgContainer {
+    height: 40vh;
+  }
 
 .profileTopContent {
     padding: 0 20px 0 20px;

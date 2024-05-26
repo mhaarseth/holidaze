@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
-import Layout from "./components/Layout/Layout.js";
+import Layout from "./components/Layout/Layout.jsx";
 import Booking from "./pages/Booking/index.jsx";
 import CreateVenue from "./pages/CreateVenue/index.jsx";
 import EditProfile from "./pages/EditProfile/index.jsx";
@@ -10,7 +10,6 @@ import Login from "./pages/Login/index.jsx";
 import Profile from "./pages/Profile/index.jsx";
 import Register from "./pages/Register/index.jsx";
 import RouteNotFound from "./pages/RouteNotFound/index.jsx";
-import UpcomingBookings from "./pages/UpcomingBookings/index.js";
 import Venue from "./pages/Venue/index.jsx";
 
 export default function App() {
@@ -27,7 +26,6 @@ export default function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<RouteNotFound />} />
-          <Route path="/upcomingbookings" element={<UpcomingBookings />} />
           <Route path="/venue/:id" element={<Venue />} />
         </Route>
       </Routes>
