@@ -54,10 +54,7 @@ export default function Registration() {
         const errorResponse = await response.json();
         throw new Error(errorResponse.errors[0].message);
       } else {
-        return (
-          <div className={styles.registrationSuccess}><p>You were successfully registered!</p>
-          <p>You can now <Link to='/login'>log in</Link>!</p></div>
-        )
+        window.location.href = "/profile";
       }
     } catch (error) {
       alert(error);
