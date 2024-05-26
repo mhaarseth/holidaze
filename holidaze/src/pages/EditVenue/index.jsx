@@ -100,7 +100,7 @@ export default function EditVenue() {
         }),
       });
       if (response.ok) {
-        window.location.href = "/profile";
+        //window.location.href = "/profile";
       }
     } catch (error) {
       alert(error);
@@ -111,7 +111,7 @@ export default function EditVenue() {
     <div lassName={styles.editVenueContainer}>
       <h2 className={styles.editVenueHeading}>Edit venue</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form action="/profile" onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputContainer}>
           <label htmlFor="venueName" className={styles.heading}>
             Venue name:

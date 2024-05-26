@@ -13,3 +13,10 @@
     gap: 25px;
     margin: 30px 0;
 }
+
+.registrationSuccess {
+    margin: 0 auto;
+    padding-top: 100px;
+    font-weight: bold;
+    color: var(--main-theme-color)
+}
