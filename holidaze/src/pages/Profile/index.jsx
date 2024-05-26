@@ -26,9 +26,8 @@ export default function Profile() {
   }
 
     if (!localStorage.getItem("token")) {
-    return (
-      <div className={styles.loginLink}><Link to="./login">Login</Link> to view your profile</div>
-    )
+    window.location.href = "/login";
+  }
   }
 
   const handleLogOut = () => {
