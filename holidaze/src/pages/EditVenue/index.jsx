@@ -48,7 +48,6 @@ export default function EditVenue() {
   const venueUrl = ALL_VENUES_URL + venueId;
 
   const { data } = useApiAuth(venueUrl);
-  console.log(data);
 
   const {
     register,
@@ -100,6 +99,7 @@ export default function EditVenue() {
         }),
       });
       if (response.ok) {
+        action="/profile"
         //window.location.href = "/profile";
       }
     } catch (error) {
