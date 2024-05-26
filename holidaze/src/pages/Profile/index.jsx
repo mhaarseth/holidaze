@@ -7,12 +7,6 @@ import ViewBookings from "../../components/ViewBookings/ViewBookings";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
-  if (!localStorage.getItem("token")) {
-    return (
-      <div className={styles.loginLink}><Link to="./login">Login</Link> to view your profile</div>
-    )
-  }
-
   const profileName = localStorage.getItem("profileName");
   const profileUrl =
     PROFILE_BASE_URL + profileName + "?_bookings=true&_venues=true";
