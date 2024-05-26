@@ -46,6 +46,12 @@ textarea {
     align-items: end;
 }
 
+.checkboxContainersContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
 .checkboxContainer {
     display: flex;
     flex-direction: row;

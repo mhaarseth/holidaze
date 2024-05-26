@@ -1,37 +1,33 @@
 import React from "react";
-
 import styles from "./CreateVenue.module.css";
-
 import { useForm } from "react-hook-form";
-import { useApiAuth } from "../../hooks/useApiAuth";
-
 import { ALL_VENUES_URL } from "../../constants/constants";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
   venueName: yup.string().required("Venue name is required"),
-  venuePicture: yup
-    .string()
-    .matches(
-      // eslint-disable-next-line
-      /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
-      "Valid url is required"
-    )
-    .required("Venue picture is required"),
-  venuePictureDescription: yup.string().required("Alt text is required"),
+  venuePicture: yup.string().matches(
+    // eslint-disable-next-line
+    /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
+    "A valid url is required"
+  ),
+  venuePictureDescription: yup.string(),
   venueDescription: yup.string().required("Venue description is required"),
   address: yup.string(),
-  town: yup.string().required("Town is required"),
+  town: yup.string(),
   zipCode: yup.string(),
-  country: yup.string().required("Country is required"),
+  country: yup.string(),
   maxGuests: yup
-    .number()
+    .number("Number of guests must be a number")
     .required("Max guests is required")
-    .positive()
+    .positive("The number must be higher than 0")
     .integer(),
-  price: yup.number().required("Price is required").positive().integer(),
+  price: yup
+    .number()
+    .required("Price is required")
+    .positive("The price must be higher than 0")
+    .integer(),
   breakfast: yup.boolean(),
   pets: yup.boolean(),
   parking: yup.boolean(),
@@ -40,8 +36,6 @@ const schema = yup.object({
 
 export default function EditVenue() {
   const venueUrl = ALL_VENUES_URL;
-
-  const { data } = useApiAuth(venueUrl);
 
   const {
     register,
@@ -129,7 +123,7 @@ export default function EditVenue() {
 
         <div className={styles.inputContainer}>
           <label htmlFor="venuePictureDescription" className={styles.heading}>
-            Venue picture alt. text:
+            Venue picture description:
           </label>
           <input {...register("venuePictureDescription")}></input>
           {errors.venuePictureDescription && (
@@ -141,7 +135,7 @@ export default function EditVenue() {
 
         <div className={styles.inputContainer}>
           <label htmlFor="venueDescription" className={styles.heading}>
-            Venue Description:
+            Venue description:
           </label>
           <textarea {...register("venueDescription")}></textarea>
           {errors.venueDescription && (
@@ -211,44 +205,46 @@ export default function EditVenue() {
           )}
         </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="breakfast" className={styles.heading}>
-            Breakfast:
-          </label>
-          <input id="breakfast" {...register("breakfast")} type="checkbox" />
-          {errors.breakfast && (
-            <p className={styles.errorMessage}>{errors.breakfast.message}</p>
-          )}
-        </div>
+        <div className={styles.checkboxContainersContainer}>
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="breakfast" className={styles.heading}>
+              Breakfast:
+            </label>
+            <input id="breakfast" {...register("breakfast")} type="checkbox" />
+            {errors.breakfast && (
+              <p className={styles.errorMessage}>{errors.breakfast.message}</p>
+            )}
+          </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="pets" className={styles.heading}>
-            Pets:
-          </label>
-          <input id="pets" {...register("pets")} type="checkbox" />
-          {errors.pets && (
-            <p className={styles.errorMessage}>{errors.pets.message}</p>
-          )}
-        </div>
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="pets" className={styles.heading}>
+              Pets:
+            </label>
+            <input id="pets" {...register("pets")} type="checkbox" />
+            {errors.pets && (
+              <p className={styles.errorMessage}>{errors.pets.message}</p>
+            )}
+          </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="parking" className={styles.heading}>
-            Parking:
-          </label>
-          <input id="parking" {...register("parking")} type="checkbox" />
-          {errors.parking && (
-            <p className={styles.errorMessage}>{errors.parking.message}</p>
-          )}
-        </div>
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="parking" className={styles.heading}>
+              Parking:
+            </label>
+            <input id="parking" {...register("parking")} type="checkbox" />
+            {errors.parking && (
+              <p className={styles.errorMessage}>{errors.parking.message}</p>
+            )}
+          </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="wifi" className={styles.heading}>
-            WiFi:
-          </label>
-          <input id="wifi" {...register("wifi")} type="checkbox" />
-          {errors.wifi && (
-            <p className={styles.errorMessage}>{errors.wifi.message}</p>
-          )}
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="wifi" className={styles.heading}>
+              WiFi:
+            </label>
+            <input id="wifi" {...register("wifi")} type="checkbox" />
+            {errors.wifi && (
+              <p className={styles.errorMessage}>{errors.wifi.message}</p>
+            )}
+          </div>
         </div>
 
         <button type="submit" className={styles.createVenueButton}>

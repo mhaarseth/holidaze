@@ -1,12 +1,8 @@
 import React from "react";
-
 import { useParams } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
 import { ALL_VENUES_URL } from "../../constants/constants";
-import { Link } from "react-router-dom";
-
 import Booking from "../../components/Booking/Booking";
-
 import styles from "./Venue.module.css";
 
 export default function Venue() {
@@ -16,8 +12,6 @@ export default function Venue() {
   const data = useApi(venueUrl);
 
   const venue = data.data;
-
-  console.log(venue);
 
   return (
     <div className={styles.venueContainer}>
@@ -81,9 +75,9 @@ export default function Venue() {
               {venue.owner && (
                 <p>
                   Managed by&nbsp;
-                  <Link to={`/profile/${venue.owner.name}`}>
+                  <span className={styles.venueManagerName}>
                     {venue.owner.name}
-                  </Link>
+                  </span>
                 </p>
               )}
             </div>

@@ -46,6 +46,10 @@
     width: 80%;
 }
 
+.venueManagerName {
+  font-weight: bold;
+}
+
 @media (width >= 900px) {
   .venueImgContainer {
     height: 40vh;

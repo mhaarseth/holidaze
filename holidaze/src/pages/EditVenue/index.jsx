@@ -12,24 +12,30 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-  venueName: yup.string().required("Venue Name is required"),
+  venueName: yup.string().required("A venue name is required"),
   venuePicture: yup.string().matches(
     // eslint-disable-next-line
     /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
-    "Valid url is required"
+    "A valid picture url is required"
   ),
-  venuePictureDescription: yup.string(),
-  venueDescription: yup.string().required("Venue Description is required"),
+  venuePictureDescription: yup
+    .string()
+    .required("Please provide a description of the venue picture."),
+  venueDescription: yup.string().required("A venue description is required"),
   address: yup.string(),
   town: yup.string(),
   zipCode: yup.string(),
   country: yup.string(),
   maxGuests: yup
     .number()
-    .required("Max Guests is required")
-    .positive()
+    .required("Number of max guests is required")
+    .positive("Number of guests need to be higher than 0")
     .integer(),
-  price: yup.number().required("Price is required").positive().integer(),
+  price: yup
+    .number()
+    .required("Please provide a price")
+    .positive("The price needs to be higher than 0")
+    .integer(),
   breakfast: yup.boolean(),
   pets: yup.boolean(),
   parking: yup.boolean(),
@@ -115,7 +121,9 @@ export default function EditVenue() {
             {...register("venueName")}
             defaultValue={data.name}
           />
-          {errors.venueName && <p>{errors.venueName.message}</p>}
+          {errors.venueName && (
+            <p className={styles.errorMessage}>{errors.venueName.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -129,12 +137,14 @@ export default function EditVenue() {
               defaultValue={data.media[0].url}
             />
           )}
-          {errors.venuePicture && <p>{errors.venuePicture.message}</p>}
+          {errors.venuePicture && (
+            <p className={styles.errorMessage}>{errors.venuePicture.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
           <label htmlFor="venuePictureDescription" className={styles.heading}>
-            Venue picture alt. text:
+            Venue picture description:
           </label>
           {data.media && (
             <input
@@ -143,7 +153,9 @@ export default function EditVenue() {
             ></input>
           )}
           {errors.venuePictureDescription && (
-            <p>{errors.venuePictureDescription.message}</p>
+            <p className={styles.errorMessage}>
+              {errors.venuePictureDescription.message}
+            </p>
           )}
         </div>
 
@@ -173,7 +185,9 @@ export default function EditVenue() {
               defaultValue={data.location.address}
             />
           )}
-          {errors.address && <p>{errors.address.message}</p>}
+          {errors.address && (
+            <p className={styles.errorMessage}>{errors.address.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -187,7 +201,9 @@ export default function EditVenue() {
               defaultValue={data.location.city}
             />
           )}
-          {errors.town && <p>{errors.town.message}</p>}
+          {errors.town && (
+            <p className={styles.errorMessage}>{errors.town.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -201,7 +217,9 @@ export default function EditVenue() {
               defaultValue={data.location.zip}
             />
           )}
-          {errors.zipCode && <p>{errors.zipCode.message}</p>}
+          {errors.zipCode && (
+            <p className={styles.errorMessage}>{errors.zipCode.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -215,7 +233,9 @@ export default function EditVenue() {
               defaultValue={data.location.country}
             />
           )}
-          {errors.country && <p>{errors.country.message}</p>}
+          {errors.country && (
+            <p className={styles.errorMessage}>{errors.country.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -228,7 +248,9 @@ export default function EditVenue() {
             type="number"
             defaultValue={data.maxGuests}
           />
-          {errors.maxGuests && <p>{errors.maxGuests.message}</p>}
+          {errors.maxGuests && (
+            <p className={styles.errorMessage}>{errors.maxGuests.message}</p>
+          )}
         </div>
 
         <div className={styles.inputContainer}>
@@ -241,60 +263,73 @@ export default function EditVenue() {
             type="number"
             defaultValue={data.price}
           />
-          {errors.price && <p>{errors.price.message}</p>}
+          {errors.price && (
+            <p className={styles.errorMessage}>{errors.price.message}</p>
+          )}
         </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="breakfast">Breakfast:</label>
-          {data.meta && (
-            <input
-              id="breakfast"
-              {...register("breakfast")}
-              type="checkbox"
-              defaultChecked={data.meta.breakfast}
-            />
-          )}
-          {errors.breakfast && <p>{errors.breakfast.message}</p>}
+        <div className={styles.checkboxContainersContainer}>
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="breakfast">Breakfast:</label>
+            {data.meta && (
+              <input
+                id="breakfast"
+                {...register("breakfast")}
+                type="checkbox"
+                defaultChecked={data.meta.breakfast}
+              />
+            )}
+            {errors.breakfast && (
+              <p className={styles.errorMessage}>{errors.breakfast.message}</p>
+            )}
+          </div>
+
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="pets">Pets:</label>
+            {data.meta && (
+              <input
+                id="pets"
+                {...register("pets")}
+                type="checkbox"
+                defaultChecked={data.meta.pets}
+              />
+            )}
+            {errors.pets && (
+              <p className={styles.errorMessage}>{errors.pets.message}</p>
+            )}
+          </div>
+
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="parking">Parking:</label>
+            {data.meta && (
+              <input
+                id="parking"
+                {...register("parking")}
+                type="checkbox"
+                defaultChecked={data.meta.parking}
+              />
+            )}
+            {errors.parking && (
+              <p className={styles.errorMessage}>{errors.parking.message}</p>
+            )}
+          </div>
+
+          <div className={styles.checkboxContainer}>
+            <label htmlFor="wifi">WiFi:</label>
+            {data.meta && (
+              <input
+                id="wifi"
+                {...register("wifi")}
+                type="checkbox"
+                defaultChecked={data.meta.wifi}
+              />
+            )}
+            {errors.wifi && (
+              <p className={styles.errorMessage}>{errors.wifi.message}</p>
+            )}
+          </div>
         </div>
 
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="pets">Pets:</label>
-          {data.meta && (
-            <input
-              id="pets"
-              {...register("pets")}
-              type="checkbox"
-              defaultChecked={data.meta.pets}
-            />
-          )}
-          {errors.pets && <p>{errors.pets.message}</p>}
-        </div>
-
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="parking">Parking:</label>
-          {data.meta && (
-            <input
-              id="parking"
-              {...register("parking")}
-              type="checkbox"
-              defaultChecked={data.meta.parking}
-            />
-          )}
-          {errors.parking && <p>{errors.parking.message}</p>}
-        </div>
-
-        <div className={styles.checkboxContainer}>
-          <label htmlFor="wifi">WiFi:</label>
-          {data.meta && (
-            <input
-              id="wifi"
-              {...register("wifi")}
-              type="checkbox"
-              defaultChecked={data.meta.wifi}
-            />
-          )}
-          {errors.wifi && <p>{errors.wifi.message}</p>}
-        </div>
         <div className={styles.buttonContainer}>
           <button type="submit" className={styles.editVenueButton}>
             Save changes

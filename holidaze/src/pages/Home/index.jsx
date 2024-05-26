@@ -10,7 +10,6 @@ export default function Home() {
   const sortedResults =
     ALL_VENUES_URL + `?sort=${sortField}&sortOrder=${sortOrder}`;
   const { data, isLoading, isError } = useApi(sortedResults);
-  console.log(data);
 
   if (isLoading) {
     return <div>Loading...</div>;

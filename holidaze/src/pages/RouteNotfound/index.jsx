@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function RouteNotFound() {
-  return <div>Route not found placeholder</div>;
+  return (
+    <div>
+      <div>Route not found placeholder</div>
+    </div>
+  );
 }

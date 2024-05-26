@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { PROFILE_BASE_URL } from "../../constants/constants";
 import { ALL_VENUES_URL } from "../../constants/constants";
-
 import { useApiAuth } from "../../hooks/useApiAuth";
 import ViewBookings from "../../components/ViewBookings/ViewBookings";
-
 import styles from "./Profile.module.css";
 
 export default function Profile() {
@@ -185,7 +182,7 @@ export default function Profile() {
                   </Link>
                   <div className={styles.cardBottomContainer}>
                     <div className={styles.cardTextContainer}>
-                      <p>
+                      <div>
                         <Link
                           to={`/venue/${booking.venue.id}`}
                           className={styles.venueName}
@@ -196,7 +193,7 @@ export default function Profile() {
                               : `${booking.venue.name}`}
                           </h3>
                         </Link>
-                      </p>
+                      </div>
                       <p className={styles.bookingDates}>
                         {booking.dateFrom.split("T")[0].split("-")[2]}.
                         {booking.dateFrom.split("-")[1]}.

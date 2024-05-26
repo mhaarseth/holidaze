@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import styles from "./EditProfile.module.css";
 
@@ -12,17 +12,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-  profilePicture: yup
-    .string()
-    .matches(
-      // eslint-disable-next-line
-      /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
-      "Valid url is required"
-    )
-    .required("Valid url is required"),
+  profilePicture: yup.string().matches(
+    // eslint-disable-next-line
+    /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(\?(.*))?/,
+    "A valid picture url is required"
+  ),
   profilePictureDescription: yup
     .string()
-    .required("Picture description is required"),
+    .required("Please provide a description of the picture"),
   profileBio: yup.string(),
   venueManager: yup.boolean(),
 });
