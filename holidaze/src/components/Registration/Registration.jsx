@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Registration.module.css";
 import { REGISTRATION_URL } from "../../constants/constants";
-import { Link } from "react-router-dom";
 
 const schema = yup.object({
   name: yup
