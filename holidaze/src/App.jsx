@@ -9,7 +9,6 @@ import Home from "./pages/Home/index.jsx";
 import Login from "./pages/Login/index.jsx";
 import Profile from "./pages/Profile/index.jsx";
 import Register from "./pages/Register/index.jsx";
-import RouteNotFound from "./pages/RouteNotFound/index.jsx";
 import Venue from "./pages/Venue/index.jsx";
 
 export default function App() {
@@ -25,7 +24,6 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
-          <Route path="*" element={<RouteNotFound />} />
           <Route path="/venue/:id" element={<Venue />} />
         </Route>
       </Routes>
