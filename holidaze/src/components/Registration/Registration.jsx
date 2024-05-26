@@ -20,7 +20,7 @@ const schema = yup.object({
     .required("A valid e-mail address is required"),
   password: yup
     .string()
-    .min(3, "Your password must be at least eight characters")
+    .min(8, "Your password must be at least eight characters")
     .required("You must provide a valid password"),
 });
 

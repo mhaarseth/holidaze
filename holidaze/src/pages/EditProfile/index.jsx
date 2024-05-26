@@ -19,8 +19,9 @@ const schema = yup.object({
   ),
   profilePictureDescription: yup
     .string()
+    .max(160, "Must not be more than 160 characters.")
     .required("Please provide a description of the picture"),
-  profileBio: yup.string(),
+  profileBio: yup.string().max(160, "Must not be more than 160 characters."),
   venueManager: yup.boolean(),
 });
 
