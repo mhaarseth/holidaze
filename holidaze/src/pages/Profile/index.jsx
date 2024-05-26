@@ -28,7 +28,6 @@ export default function Profile() {
     if (!localStorage.getItem("token")) {
     window.location.href = "/login";
   }
-  }
 
   const handleLogOut = () => {
     alert("You have been logged out");
