@@ -99,8 +99,7 @@ export default function EditVenue() {
         }),
       });
       if (response.ok) {
-        action="/profile"
-        //window.location.href = "/profile";
+        window.location.href = "/profile";
       }
     } catch (error) {
       alert(error);
