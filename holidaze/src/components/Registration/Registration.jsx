@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Registration.module.css";
 import { REGISTRATION_URL } from "../../constants/constants";
+import { Link } from "react-router-dom";
 
 const schema = yup.object({
   name: yup
@@ -53,8 +54,10 @@ export default function Registration() {
         const errorResponse = await response.json();
         throw new Error(errorResponse.errors[0].message);
       } else {
-        alert("Successfully registered!");
-        window.location.href = "/login";
+        return (
+          <div className={styles.registrationSuccess}><p>You were successfully registered!</p>
+          <p>You can now <Link to='/login'>log in</Link>!</p></div>
+        )
       }
     } catch (error) {
       alert(error);
