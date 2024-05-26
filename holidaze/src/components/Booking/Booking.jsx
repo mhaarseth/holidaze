@@ -76,6 +76,8 @@ export default function Booking() {
 
       if (!response.ok) {
         throw new Error(json.errors[0].message);
+      } else {
+        alert("Venue booked");
       }
     } catch (error) {
       alert(error);
