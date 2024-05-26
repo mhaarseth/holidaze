@@ -26,7 +26,7 @@ export default function Profile() {
   }
 
     if (!localStorage.getItem("token")) {
-    window.location.href = "/profile";
+    window.location.href = "/login";
   }
 
   const handleLogOut = () => {
